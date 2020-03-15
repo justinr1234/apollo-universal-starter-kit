@@ -152,6 +152,7 @@ For MySQL:
 * [Connecting using a URI String]
 * [Using Encrypted Connections]
 * [MySQL socket path]
+* [Setting ssl options](https://www.npmjs.com/package/mysql#ssl-options)
 
 ## Internationalization
 
