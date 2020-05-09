@@ -46,6 +46,14 @@ const Html = ({ content, state, css, headElements, helmet }: HtmlProps) => (
       {helmet.style.toComponent()}
       {helmet.script.toComponent()}
       {helmet.noscript.toComponent()}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `window.__APOLLO_STATE__=${serialize(state, {
+            isJSON: true
+          })};`
+        }}
+        charSet="UTF-8"
+      />
       {assetMap['vendor.js'] && <script src={`${assetMap['vendor.js']}`} charSet="utf-8" />}
       {headElements}
       <meta charSet="utf-8" />
@@ -62,14 +70,6 @@ const Html = ({ content, state, css, headElements, helmet }: HtmlProps) => (
     </head>
     <body {...helmet.bodyAttributes.toComponent()}>
       <div id="root" dangerouslySetInnerHTML={{ __html: content || '' }} />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `window.__APOLLO_STATE__=${serialize(state, {
-            isJSON: true
-          })};`
-        }}
-        charSet="UTF-8"
-      />
     </body>
   </html>
 );
